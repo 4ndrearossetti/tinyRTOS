@@ -1,6 +1,6 @@
 #include "rtos.h"
 
-int system_ticks = 0;
+volatile sig_atomic_t system_ticks = 0;
 int current_idx = 0;
 task_control_board_t *tcbs[NUM_TASKS];
 

@@ -1,6 +1,7 @@
 #ifndef RTOS_H
 #define RTOS_H
 
+#include <signal.h>
 #include <ucontext.h>
 
 #define NUM_TASKS 3
@@ -17,7 +18,7 @@ typedef struct {
         int wake_time;
 } task_control_board_t;
 
-extern int system_ticks;
+extern volatile sig_atomic_t system_ticks;
 extern task_control_board_t *tcbs[NUM_TASKS];
 extern int current_idx;
 
