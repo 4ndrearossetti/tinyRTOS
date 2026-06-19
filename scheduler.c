@@ -5,8 +5,6 @@ int current_idx = 0;
 task_control_board_t *tcbs[NUM_TASKS];
 
 void yield(void) {
-        system_ticks++;
-
         for (int i = 0; i < NUM_TASKS; i++) {
                 if (tcbs[i]->state == TASK_BLOCKED && tcbs[i]->wake_time <= system_ticks) {
                         tcbs[i]->state = TASK_READY;

@@ -25,5 +25,7 @@ void init_tcb(task_control_board_t *tcb, void (*entry)(void));
 void yield(void);
 void task_delay(int ticks);
 
+void timer_init();
+
 #endif
 

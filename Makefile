@@ -13,7 +13,7 @@ LIBS =
 TARGET = main
 
 # Source files
-SRCS = main.c scheduler.c context.c
+SRCS = main.c scheduler.c context.c timer.c
 
 # Object files (now in build/)
 OBJS = $(addprefix build/,$(SRCS:.c=.o))

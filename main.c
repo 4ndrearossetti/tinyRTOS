@@ -34,6 +34,8 @@ int main(void) {
         init_tcb(&tcb_b, task_b);
         init_tcb(&tcb_idle, task_idle);
 
+        timer_init();
+
         setcontext(&tcb_a.exec_state);
 
         return 0;
