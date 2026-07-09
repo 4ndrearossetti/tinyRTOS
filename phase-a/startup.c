@@ -10,6 +10,7 @@ extern uint32_t _estack;   // top of stack
 int main(void);
 void Reset_Handler(void);
 void Default_Handler(void);
+void SysTick_Handler(void);
 
 // Place this array in the .isr_vector section so the linker script puts it at 0x08000000
 __attribute__((section(".isr_vector")))
@@ -26,7 +27,7 @@ const uint32_t vector_table[] = {
     (uint32_t)Default_Handler,    // 12: DebugMon
     0,                            // 13: Reserved
     (uint32_t)Default_Handler,    // 14: PendSV
-    (uint32_t)Default_Handler,    // 15: SysTick
+    (uint32_t)SysTick_Handler,    // 15: SysTick
     // (60 peripheral IRQs would follow — omitted for A0)
 };
 
