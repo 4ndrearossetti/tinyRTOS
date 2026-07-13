@@ -16,13 +16,13 @@ typedef struct {
         char stack[16384];
         task_state_t state;
         int wake_time;
-} task_control_board_t;
+} task_control_block_t;
 
 extern volatile sig_atomic_t system_ticks;
-extern task_control_board_t *tcbs[NUM_TASKS];
+extern task_control_block_t *tcbs[NUM_TASKS];
 extern int current_idx;
 
-void init_tcb(task_control_board_t *tcb, void (*entry)(void));
+void init_tcb(task_control_block_t *tcb, void (*entry)(void));
 void yield(void);
 void task_delay(int ticks);
 

@@ -2,7 +2,7 @@
 
 volatile sig_atomic_t system_ticks = 0;
 int current_idx = 0;
-task_control_board_t *tcbs[NUM_TASKS];
+task_control_block_t *tcbs[NUM_TASKS];
 
 void yield(void) {
         for (int i = 0; i < NUM_TASKS; i++) {

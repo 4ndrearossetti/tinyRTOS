@@ -23,3 +23,6 @@ build/
 # Executables (for cross-platform or external builds)
 *.exe
 
+phase-a/tinyrtos.bin
+phase-a/tinyrtos.elf
+

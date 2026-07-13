@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "rtos.h"
 
-static task_control_board_t tcb_a;
-static task_control_board_t tcb_b;
-static task_control_board_t tcb_idle;
+static task_control_block_t tcb_a;
+static task_control_block_t tcb_b;
+static task_control_block_t tcb_idle;
 
 static void task_a(void) {
         while (1) {
