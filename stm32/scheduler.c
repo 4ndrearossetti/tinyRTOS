@@ -10,8 +10,8 @@ volatile uint32_t system_ticks = 0;
 
 volatile uint32_t current_idx = 0;
 tcb_t *tcbs[NUM_TASKS];
-tcb_t volatile *current_tcb;
-tcb_t volatile *next_tcb;
+tcb_t * volatile current_tcb;
+tcb_t * volatile next_tcb;
 
 void scheduler_pick_next(void) {
         for (uint32_t i = 0; i < NUM_TASKS; i++) {

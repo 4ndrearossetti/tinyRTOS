@@ -19,8 +19,8 @@ typedef struct {
 
 extern volatile uint32_t system_ticks;
 extern tcb_t *tcbs[NUM_TASKS];
-extern volatile tcb_t *current_tcb;
-extern volatile tcb_t *next_tcb;
+extern tcb_t * volatile current_tcb;
+extern tcb_t * volatile next_tcb;
 
 void systick_init(void);
 
