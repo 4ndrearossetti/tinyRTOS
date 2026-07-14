@@ -37,7 +37,7 @@ make
 make flash
 ```
 
-The onboard LED (PC13) blinks at 1 Hz, driven by a task calling `task_delay(500)` under preemptive scheduling.
+The onboard LED blinks at 1 Hz; an LED on PB0 (through a resistor to GND) blinks at 5 Hz. Two tasks, visibly independent.
 
 **linux:**
 
@@ -48,4 +48,10 @@ make run
 ```
 
 Two tasks print at different rates, paced by wall-clock time. Ctrl-C to stop.
+
+## Demo
+
+![](demo.gif)
+
+Two LEDs, two tasks, one scheduler: the onboard LED (PC13) toggles every 500 ms, an external LED (PB0) every 100 ms — independent rhythms under preemptive round-robin, with an idle task absorbing the gaps.
 
