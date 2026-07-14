@@ -11,7 +11,7 @@ CFLAGS += -ffunction-sections -fdata-sections
 LDFLAGS = -T linker.ld -nostdlib -Wl,--gc-sections
 
 TARGET = tinyrtos
-SRCS = startup.c systick.c main.c
+SRCS = startup.c systick.c context.c scheduler.c pendsv.s main.c
 
 all: $(TARGET).bin
 
