@@ -3,12 +3,15 @@
 #define SCB_ICSR        (*(volatile uint32_t *)0xE000ED04)
 #define PENDSVSET       (1u << 28)
 
+static inline void irq_disable(void) { __asm__ volatile ("cpsid i" ::: "memory"); }
+static inline void irq_enable(void)  { __asm__ volatile ("cpsie i" ::: "memory"); }
+
 volatile uint32_t system_ticks = 0;
 
 volatile uint32_t current_idx = 0;
 tcb_t *tcbs[NUM_TASKS];
-tcb_t *current_tcb;
-tcb_t *next_tcb;
+tcb_t volatile *current_tcb;
+tcb_t volatile *next_tcb;
 
 void scheduler_pick_next(void) {
         for (uint32_t i = 0; i < NUM_TASKS; i++) {
@@ -28,10 +31,12 @@ void scheduler_pick_next(void) {
 }
 
 void task_delay(uint32_t ticks) {
-        current_tcb->state = TASK_BLOCKED;
+        irq_disable();
         current_tcb->wake_time = system_ticks + ticks;
+        current_tcb->state = TASK_BLOCKED;
         scheduler_pick_next();
         SCB_ICSR = PENDSVSET;
+        irq_enable();
 }
 
 void SysTick_Handler(void) {

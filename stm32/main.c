@@ -46,7 +46,7 @@ int main(void) {
         GPIOC_CRH &= ~(0xF << 20);
         GPIOC_CRH |=  (0x2 << 20);
 
-        RCC_APB2ENR |= RCC_IOPCEN | RCC_IOPBEN;
+        RCC_APB2ENR |= RCC_IOPBEN;
         GPIOB_CRL &= ~(0xF << 0);
         GPIOB_CRL |=  (0x2 << 0);
 
