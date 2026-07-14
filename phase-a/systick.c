@@ -12,7 +12,3 @@ void systick_init(void) {
         CTRL = (1<<0) | (1<<1) | (1<<2);
 }
 
-void SysTick_Handler(void) {
-        system_ticks++;
-}
-

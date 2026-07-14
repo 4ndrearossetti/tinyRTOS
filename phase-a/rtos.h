@@ -18,9 +18,13 @@ typedef struct {
 } tcb_t;
 
 extern volatile uint32_t system_ticks;
+extern tcb_t *tcbs[NUM_TASKS];
+extern tcb_t *current_tcb;
+extern tcb_t *next_tcb;
 
 void systick_init(void);
 
+void scheduler_start(void);
 void task_stack_init(tcb_t * tcb, void (*entry)(void));
 
 void scheduler_pick_next(void);

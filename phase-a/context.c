@@ -1,7 +1,7 @@
 #include "rtos.h"
 
 void task_stack_init(tcb_t *tcb, void (*entry)(void)) {
-        tcb->sp = &tcb->stack[256];
+        tcb->sp = (uint32_t *)(((uint32_t)&tcb->stack[256]) & ~0x7u);
 
         *(--(tcb->sp)) = 0x01000000;            // xPSR
         *(--(tcb->sp)) = (uint32_t)entry;       // PC

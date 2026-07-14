@@ -11,7 +11,7 @@ CFLAGS += -ffunction-sections -fdata-sections
 LDFLAGS = -T linker.ld -nostdlib -Wl,--gc-sections
 
 TARGET = tinyrtos
-SRCS = startup.c systick.c context.c scheduler.c pendsv.s main.c
+SRCS = startup.c systick.c scheduler.c context.c context.s main.c
 
 all: $(TARGET).bin
 
@@ -22,7 +22,7 @@ $(TARGET).bin: $(TARGET).elf
 	$(OBJCOPY) -O binary $< $@
 
 flash: $(TARGET).bin
-	st-flash write $(TARGET).bin 0x08000000
+	st-flash --reset write $(TARGET).bin 0x08000000
 
 clean:
 	rm -f $(TARGET).elf $(TARGET).bin

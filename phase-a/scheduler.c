@@ -34,3 +34,11 @@ void task_delay(uint32_t ticks) {
         SCB_ICSR = PENDSVSET;
 }
 
+void SysTick_Handler(void) {
+        system_ticks++;
+        scheduler_pick_next();
+        if (next_tcb != current_tcb) {
+                SCB_ICSR = PENDSVSET;
+        }
+}
+
