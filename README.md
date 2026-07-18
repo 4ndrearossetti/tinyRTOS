@@ -4,6 +4,8 @@ A minimal preemptive RTOS for ARM Cortex-M, built from scratch to understand sch
 
 Runs on real hardware: STM32F103C8T6 (Blue Pill), Cortex-M3, bare metal — no HAL, own linker script and startup, hand-written context switch in ARMv7-M assembly, SysTick driving the tick, PendSV doing the switch.
 
+More details on my website: <a href="https://andrearossetti.me/projects/tinyRTOS" target="_blank">andrearossetti.me</a>
+
 ## Layout
 
 ```
